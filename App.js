@@ -39,5 +39,30 @@ function cypher(str, k) {
   }
   return ans;
 }
+function getBasicProps() {
+  return {
+    average: getAverage([].slice.apply(arguments)),
+    min: getMin([].slice.apply(arguments)),
+    max: getMax([].slice.apply(arguments)),
+    length: [].slice.apply(arguments).length
+  }
+}
+function getAverage(arr) {
+  return arr.reduce((prev, cur) => prev + cur, 0);
+}
+function getMin(arr) {
+  let min = arr[0];
+  for(let i = 1; i < arr.length; i ++) {
+    if(arr[i] < min) min = arr[i];
+  }
+  return min;
+}
+function getMax(arr) {
+  let max = arr[0];
+  for(let i = 1; i < arr.length; i ++) {
+    if(arr[i] > max) max = arr[i];
+  }
+  return max;
+}
 
-module.exports = {capitalize, reverse, add, subtract, multiply, divide, cypher}
+module.exports = {capitalize, reverse, add, subtract, multiply, divide, cypher, getBasicProps}
