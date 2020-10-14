@@ -44,23 +44,23 @@ function getBasicProps() {
     average: getAverage([].slice.apply(arguments)),
     min: getMin([].slice.apply(arguments)),
     max: getMax([].slice.apply(arguments)),
-    length: [].slice.apply(arguments).length
+    length: [].slice.apply(arguments)[0].length
   }
 }
 function getAverage(arr) {
-  return arr.reduce((prev, cur) => prev + cur, 0);
+  return arr[0].reduce((prev, cur) => prev + cur, 0) / arr[0].length;
 }
 function getMin(arr) {
-  let min = arr[0];
-  for(let i = 1; i < arr.length; i ++) {
-    if(arr[i] < min) min = arr[i];
+  let min = arr[0][0];
+  for(let i = 1; i < arr[0].length; i ++) {
+    if(arr[0][i] < min) min = arr[0][i];
   }
   return min;
 }
 function getMax(arr) {
-  let max = arr[0];
-  for(let i = 1; i < arr.length; i ++) {
-    if(arr[i] > max) max = arr[i];
+  let max = arr[0][0];
+  for(let i = 1; i < arr[0].length; i ++) {
+    if(arr[0][i] > max) max = arr[0][i];
   }
   return max;
 }
